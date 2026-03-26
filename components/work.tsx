@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Instagram } from "lucide-react"
 import Image from "next/image"
 import { FilmTimeline } from "@/components/film-timeline"
 
@@ -49,11 +49,20 @@ const projects = [
     imdb: "https://www.imdb.com/title/tt0924262/",
   },
   {
-    title: "OTT Originals",
-    category: "OTT Productions",
-    badge: "2 Projects",
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=900&fit=crop",
+    title: "Pothugadda",
+    category: "OTT Movie",
+    badge: "24 Cinema Street",
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=900&fit=crop",
     imdb: null,
+    instagram: "https://www.instagram.com/p/DFcgSvvP3-N/",
+  },
+  {
+    title: "RightOLeftO",
+    category: "OTT Series",
+    badge: "24 Cinema Street",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=900&fit=crop",
+    imdb: null,
+    instagram: "https://www.instagram.com/p/Cp0C8-8ppQu/",
   },
 ]
 
@@ -189,6 +198,18 @@ export function Work() {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ExternalLink className="w-3.5 h-3.5 text-white" />
+                </a>
+              )}
+              {"instagram" in project && project.instagram && (
+                <a
+                  href={project.instagram as string}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-8 h-8 rounded-full bg-pink-500/90 flex items-center justify-center z-10"
+                  aria-label={`View ${project.title} on Instagram`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Instagram className="w-3.5 h-3.5 text-white" />
                 </a>
               )}
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-5">
