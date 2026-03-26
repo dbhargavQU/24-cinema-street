@@ -55,6 +55,7 @@ const projects = [
     image: "/images/pothugadda.png",
     imdb: null,
     instagram: "https://www.instagram.com/p/DFcgSvvP3-N/",
+    contain: true,
   },
   {
     title: "RightOLeftO",
@@ -63,6 +64,7 @@ const projects = [
     image: "/images/righto-lefto.png",
     imdb: null,
     instagram: "https://www.instagram.com/p/Cp0C8-8ppQu/",
+    contain: true,
   },
 ]
 
@@ -175,7 +177,7 @@ export function Work() {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`group relative aspect-[2/3] rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ${
+              className={`group relative aspect-[2/3] rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ${"contain" in project && project.contain ? "bg-black" : ""} ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
@@ -184,7 +186,7 @@ export function Work() {
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className={`${"contain" in project && project.contain ? "object-contain" : "object-cover"} transition-transform duration-700 group-hover:scale-105`}
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-all duration-300 group-hover:via-black/40" />
