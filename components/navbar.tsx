@@ -48,24 +48,26 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4 flex items-center justify-between">
-        {/* Logo */}
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="relative w-10 h-10 md:w-12 md:h-12 transition-transform hover:scale-105 shrink-0"
-          aria-label="Go to top"
-        >
-          <Image
-            src="/images/logo.png"
-            alt="24 Cinema Street"
-            fill
-            className="object-contain"
-            priority
-          />
-        </button>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4 grid grid-cols-[1fr_auto_1fr] md:grid-cols-3 items-center">
+        {/* Logo — left */}
+        <div className="flex items-center">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="relative w-10 h-10 md:w-12 md:h-12 transition-transform hover:scale-105 shrink-0"
+            aria-label="Go to top"
+          >
+            <Image
+              src="/images/logo.png"
+              alt="24 Cinema Street"
+              fill
+              className="object-contain"
+              priority
+            />
+          </button>
+        </div>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+        {/* Desktop Navigation — center */}
+        <ul className="hidden md:flex items-center justify-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
               <button
@@ -78,8 +80,11 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* CTA Button & Theme Toggle */}
-        <div className="hidden md:flex items-center gap-2">
+        {/* Mobile hamburger placeholder — center (keeps logo left on mobile) */}
+        <div className="md:hidden" />
+
+        {/* CTA Button & Theme Toggle — right */}
+        <div className="hidden md:flex items-center justify-end gap-2">
           <ThemeToggle />
           <Button
             onClick={() => handleNavClick("#contact")}
@@ -89,8 +94,8 @@ export function Navbar() {
           </Button>
         </div>
 
-        {/* Mobile: Theme toggle + hamburger */}
-        <div className="md:hidden flex items-center gap-1">
+        {/* Mobile: Theme toggle + hamburger — right */}
+        <div className="md:hidden flex items-center justify-end gap-1">
           <ThemeToggle />
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
